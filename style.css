@@ -1,0 +1,488 @@
+/* ==================== THEME VARIABLES ==================== */
+:root {
+  /* Dark mode (default) */
+  --bg-gradient-start: #0b1e2e;
+  --bg-gradient-end: #14324a;
+  --card-bg: rgba(20, 40, 56, 0.85);
+  --card-border: rgba(100, 180, 255, 0.15);
+  --text-main: #e8f2fc;
+  --text-sub: #a8c8e0;
+  --text-heading: #a8d8ff;
+  --upload-bg: rgba(10, 25, 38, 0.7);
+  --upload-border: #4a7a9e;
+  --upload-bg-active: rgba(16, 38, 54, 0.9);
+  --upload-border-active: #6ab0ff;
+  --preview-border: #a8d8ff;
+  --btn-primary-bg: #a8d8ff;
+  --btn-primary-text: #0b1e2e;
+  --btn-primary-shadow: #5a8ab0;
+  --btn-secondary-border: #a8d8ff;
+  --btn-secondary-text: #a8d8ff;
+  --btn-secondary-shadow: #2e4a5e;
+  --status-bg: rgba(0, 0, 0, 0.35);
+  --status-border: rgba(168, 216, 255, 0.2);
+  --status-text: #c8e0f4;
+  --result-bg: #0a1a28;
+  --result-border: #6ab0ff;
+  --result-text: #d0e4f4;
+  --result-heading: #a8d8ff;
+  --result-divider: #1e3a52;
+  --error-text: #ffb4a2;
+  --error-bg: rgba(180, 60, 40, 0.25);
+  --footnote: #6a8ea8;
+  --placeholder-icon: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --inset-shadow: rgba(255, 255, 255, 0.08);
+  --toggle-bg: #14324a;
+  --toggle-icon: #a8d8ff;
+}
+
+[data-theme="light"] {
+  --bg-gradient-start: #e6f0f8;
+  --bg-gradient-end: #c8dce8;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(80, 140, 200, 0.3);
+  --text-main: #1a2e3e;
+  --text-sub: #4a6a82;
+  --text-heading: #2a5a8a;
+  --upload-bg: rgba(255, 255, 255, 0.7);
+  --upload-border: #8ab0c8;
+  --upload-bg-active: rgba(255, 255, 255, 0.95);
+  --upload-border-active: #4a8ac8;
+  --preview-border: #4a8ac8;
+  --btn-primary-bg: #2a5a8a;
+  --btn-primary-text: #ffffff;
+  --btn-primary-shadow: #1a3a5a;
+  --btn-secondary-border: #2a5a8a;
+  --btn-secondary-text: #2a5a8a;
+  --btn-secondary-shadow: #c8dce8;
+  --status-bg: rgba(255, 255, 255, 0.7);
+  --status-border: rgba(80, 140, 200, 0.3);
+  --status-text: #4a6a82;
+  --result-bg: #ffffff;
+  --result-border: #4a8ac8;
+  --result-text: #1a2e3e;
+  --result-heading: #2a5a8a;
+  --result-divider: #d4e0ea;
+  --error-text: #a03020;
+  --error-bg: rgba(200, 100, 80, 0.2);
+  --footnote: #6a8aa0;
+  --placeholder-icon: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --inset-shadow: rgba(255, 255, 255, 0.6);
+  --toggle-bg: #d4e0ea;
+  --toggle-icon: #2a5a8a;
+}
+
+/* ==================== RESET ==================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(145deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  color: var(--text-main);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ==================== APP CARD ==================== */
+.app-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 40px;
+  padding: 24px 20px 28px;
+  max-width: 560px;
+  width: 100%;
+  box-shadow: 0 30px 45px -15px var(--shadow-color), inset 0 1px 2px var(--inset-shadow);
+  border: 1px solid var(--card-border);
+  transition: background 0.4s ease, border 0.4s ease;
+  position: relative;
+}
+
+/* ==================== THEME TOGGLE ==================== */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--toggle-bg);
+  color: var(--toggle-icon);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, transform 0.15s;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  z-index: 5;
+  line-height: 1;
+}
+
+.theme-toggle:active {
+  transform: scale(0.92);
+}
+
+/* ==================== HEADINGS ==================== */
+h1 {
+  font-size: 1.9rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  color: var(--text-heading);
+  text-shadow: 0 2px 8px var(--shadow-color);
+  padding-right: 50px;
+  transition: color 0.4s ease;
+}
+
+h1 span {
+  font-size: 2rem;
+}
+
+.subhead {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  margin-bottom: 24px;
+  font-weight: 400;
+  border-left: 3px solid var(--result-border);
+  padding-left: 14px;
+  transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+/* ==================== CAMERA AREA ==================== */
+.camera-area {
+  background: var(--upload-bg);
+  border: 2px dashed var(--upload-border);
+  border-radius: 28px;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: all 0.15s ease, background 0.4s ease, border-color 0.4s ease;
+  overflow: hidden;
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.camera-area.active {
+  border-style: solid;
+  border-color: var(--upload-border-active);
+  background: var(--upload-bg-active);
+}
+
+.camera-area video {
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: cover;
+  display: block;
+  border-radius: 26px;
+}
+
+.camera-area canvas {
+  display: none;
+}
+
+.camera-preview-img {
+  width: 100%;
+  max-height: 340px;
+  object-fit: contain;
+  display: block;
+  border-radius: 26px;
+  background: #000;
+}
+
+.camera-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 16px;
+}
+
+.camera-placeholder .placeholder-icon {
+  font-size: 3.2rem;
+  filter: var(--placeholder-icon);
+  margin-bottom: 8px;
+}
+
+.camera-placeholder p {
+  font-size: 0.95rem;
+  color: var(--text-sub);
+}
+
+/* ==================== CAMERA CONTROLS ==================== */
+.camera-controls {
+  display: flex;
+  gap: 10px;
+  padding: 0 0 14px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.camera-controls button {
+  border: none;
+  padding: 12px 22px;
+  border-radius: 60px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.1s, box-shadow 0.1s, opacity 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-capture {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  box-shadow: 0 4px 0 var(--btn-primary-shadow);
+}
+
+.btn-capture:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--btn-primary-shadow);
+}
+
+.btn-capture:disabled {
+  opacity: 0.5;
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--btn-primary-shadow);
+  pointer-events: none;
+}
+
+.btn-switch-cam {
+  background: transparent;
+  color: var(--btn-secondary-text);
+  border: 2px solid var(--btn-secondary-border);
+  box-shadow: 0 4px 0 var(--btn-secondary-shadow);
+}
+
+.btn-switch-cam:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--btn-secondary-shadow);
+}
+
+/* ==================== ANALYZE/CANCEL BUTTONS ==================== */
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.btn-primary, .btn-secondary {
+  flex: 1;
+  border: none;
+  padding: 16px 10px;
+  border-radius: 60px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+  transition: all 0.15s;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  box-shadow: 0 6px 0 var(--btn-primary-shadow), 0 8px 16px var(--shadow-color);
+}
+
+.btn-primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--btn-primary-shadow), 0 8px 16px var(--shadow-color);
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--btn-primary-shadow), 0 8px 16px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--btn-secondary-text);
+  border: 2px solid var(--btn-secondary-border);
+  box-shadow: 0 4px 0 var(--btn-secondary-shadow);
+}
+
+.btn-secondary:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--btn-secondary-shadow);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.4;
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--btn-secondary-shadow);
+  pointer-events: none;
+}
+
+/* ==================== STATUS BOX ==================== */
+.status-box {
+  background: var(--status-bg);
+  border-radius: 40px;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  text-align: center;
+  font-size: 0.95rem;
+  min-height: 3.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--status-border);
+  color: var(--status-text);
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* ==================== RESULT CARD ==================== */
+.result-card {
+  background: var(--result-bg);
+  border-radius: 32px;
+  padding: 20px 18px;
+  box-shadow: inset 0 2px 10px var(--shadow-color), 0 8px 20px var(--shadow-color);
+  border-left: 6px solid var(--result-border);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-weight: 600;
+  color: var(--result-heading);
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--result-divider);
+  padding-bottom: 10px;
+  transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+.result-content {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--result-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  transition: color 0.4s ease;
+}
+
+.result-content strong {
+  color: var(--text-heading);
+}
+
+/* ==================== FINAL ACTIONS ==================== */
+.final-actions {
+  display: none;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.final-actions.visible {
+  display: flex;
+}
+
+.btn-final {
+  flex: 1;
+  border: none;
+  padding: 16px 10px;
+  border-radius: 60px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-again {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  box-shadow: 0 6px 0 var(--btn-primary-shadow);
+}
+
+.btn-again:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--btn-primary-shadow);
+}
+
+.btn-leave {
+  background: transparent;
+  color: var(--btn-secondary-text);
+  border: 2px solid var(--btn-secondary-border);
+  box-shadow: 0 4px 0 var(--btn-secondary-shadow);
+}
+
+.btn-leave:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--btn-secondary-shadow);
+}
+
+/* ==================== FOOTNOTE ==================== */
+.footnote {
+  font-size: 0.72rem;
+  text-align: center;
+  color: var(--footnote);
+  margin-top: 18px;
+  letter-spacing: 0.2px;
+  transition: color 0.4s ease;
+}
+
+/* ==================== UTILITIES ==================== */
+.hidden {
+  display: none !important;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 420px) {
+  .app-card {
+    padding: 18px 14px 22px;
+    border-radius: 32px;
+  }
+  h1 {
+    font-size: 1.6rem;
+    padding-right: 44px;
+  }
+  .btn-primary, .btn-secondary {
+    font-size: 0.95rem;
+    padding: 14px 8px;
+  }
+  .btn-final {
+    font-size: 0.9rem;
+    padding: 14px 8px;
+  }
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+    top: 14px;
+    right: 14px;
+  }
+}

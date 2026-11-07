@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Gadget Specs Analyzer · Oxford AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-card">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">🌙</button>
+
+    <h1>
+      <span>📱</span> Gadget Analyzer
+    </h1>
+    <div class="subhead">Point your camera at any gadget — AI will identify the brand, describe it, list specs, estimate cost, and tell you what it's good at.</div>
+
+    <!-- Camera area -->
+    <div class="camera-area" id="cameraArea">
+      <div class="camera-placeholder" id="cameraPlaceholder">
+        <div class="placeholder-icon">📷</div>
+        <p id="cameraStatusText">Starting camera…</p>
+      </div>
+      <video id="video" class="hidden" autoplay playsinline></video>
+      <img id="capturedPreview" class="camera-preview-img hidden" alt="Captured gadget">
+      <canvas id="captureCanvas" class="hidden"></canvas>
+    </div>
+
+    <!-- Camera controls (Capture / Retake) -->
+    <div class="camera-controls" id="cameraControls">
+      <button class="btn-capture" id="captureBtn" disabled>📸 Capture</button>
+      <button class="btn-switch-cam" id="retakeBtn" style="display:none;">🔄 Retake</button>
+    </div>
+
+    <!-- Analyze / Cancel -->
+    <div class="button-group">
+      <button class="btn-primary" id="analyzeBtn" disabled>🔍 Analyze</button>
+      <button class="btn-secondary" id="cancelBtn" disabled>✕ Cancel</button>
+    </div>
+
+    <!-- Status -->
+    <div class="status-box" id="statusBox">
+      <span id="statusMessage">Initializing camera…</span>
+    </div>
+
+    <!-- Result -->
+    <div class="result-card" id="resultCard">
+      <div class="result-header">
+        <span>📋</span> Analysis result
+      </div>
+      <div class="result-content" id="resultContent">
+        Your gadget analysis will appear here.
+      </div>
+    </div>
+
+    <!-- Final actions: Capture again / Leave -->
+    <div class="final-actions" id="finalActions">
+      <button class="btn-final btn-again" id="captureAgainBtn">📸 Capture Again</button>
+      <button class="btn-final btn-leave" id="leaveBtn">👋 Leave</button>
+    </div>
+
+    <div class="footnote">Oxford AI · works only in the Philippines</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
